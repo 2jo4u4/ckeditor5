@@ -30,6 +30,11 @@ import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 import CloudServices from '@ckeditor/ckeditor5-cloud-services/src/cloudservices';
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
+import Font from '@ckeditor/ckeditor5-font/src/font';
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
+import Subscript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
+import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -58,7 +63,12 @@ ClassicEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	TextTransformation
+	TextTransformation,
+	Alignment,
+	Font,
+	Underline,
+	Subscript,
+	Superscript,
 ];
 
 // Editor configuration.
@@ -67,8 +77,21 @@ ClassicEditor.defaultConfig = {
 		items: [
 			'heading',
 			'|',
+			'alignment',
+
+			'|',
 			'bold',
 			'italic',
+			'strikethrough',
+			'underline',
+			'subscript',
+			'superscript',
+			'|',
+			'fontSize',
+			'fontFamily',
+			'fontColor',
+			'fontBackgroundColor',
+			'|',
 			'link',
 			'bulletedList',
 			'numberedList',
@@ -81,26 +104,29 @@ ClassicEditor.defaultConfig = {
 			'insertTable',
 			'mediaEmbed',
 			'undo',
-			'redo'
-		]
+			'redo',
+		],
 	},
 	image: {
 		toolbar: [
-			'imageStyle:inline',
-			'imageStyle:block',
-			'imageStyle:side',
+			'imageStyle:alignLeft',
+			'imageStyle:alignCenter',
+			'imageStyle:alignRight',
 			'|',
 			'toggleImageCaption',
-			'imageTextAlternative'
-		]
+			'imageTextAlternative',
+		],
 	},
 	table: {
-		contentToolbar: [
-			'tableColumn',
-			'tableRow',
-			'mergeTableCells'
-		]
+		contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells'],
+	},
+	fontSize: {
+		options: [
+			14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46,
+			48,
+		],
+		supportAllValues: true,
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: 'en'
+	language: 'zh',
 };
